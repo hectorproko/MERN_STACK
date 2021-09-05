@@ -205,6 +205,11 @@ Server running on port 5000 #Output if everything is ok
     * Pick type **Custom TCP** and source **0.0.0.0/0** meaning all IPs, you can also use drop-down menu **Anywhere-IPv4**
     * Save it <br />
     ![Markdown Logo](https://raw.githubusercontent.com/hectorproko/LAMP_STACK/main/images/SaveRules.png) 
+
+
+    ![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png)
+     
+
 ## MODELS
 ## MONGODB DATABASE
 
