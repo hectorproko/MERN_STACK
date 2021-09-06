@@ -313,46 +313,102 @@ We need a database where we will store our data. For this we will make use of m
 [Sign up here.](https://github.com/nodesource/distributions#deb) 
 Follow the sign up process, select AWS as the cloud provider, and choose a region near you.
 
-Pick Shared and click Create<br>
+* Pick Shared and click Create<br>
 ![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/shared.png)
 
-Pick **aws** as your cloud provider and click **Create Cluster**
+* Pick **aws** as your cloud provider and click **Create Cluster**
 ![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/cloudProvider.png)
 ![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/createCluster.png)
 
 
-Allow access to the MongoDB database from anywhere (Not secure, but it is ideal for testing)
-IMPORTANT NOTE
-In the image below, make sure you change the time of deleting the entry from 6 Hours to 1 Week <br>
+* Allow access to the MongoDB database from anywhere (Not secure, but it is ideal for testing) <br>
 ![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/networkAccess.png)
-
-![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/addIP.png)
-
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/addIP.png) <br>
+In the image below, make sure you change the time of deleting the entry from 6 Hours to 1 Week <br>
 ![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/addIP2.png)
 
 
 
-Click on **Browse Collections**<br>
+* Click on **Browse Collections**<br>
 ![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/databases.png)
 
-Click on **Add My Own Data**<br>
+* Click on **Add My Own Data**<br>
 ![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/loadSampleDataset.png)
 
-Created Database named **myFirstDatabase**<br>
+* Created Database named **myFirstDatabase**<br>
 ![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/createDatabase2.png)
 
-Click **Connect** and on step 2 **Create a Database User** mine is  **user_sample**
+* Click **Connect** and on step 2 **Create a Database User** mine is  **user_sample**
 ![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/connect.png)
 ![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/databaseUser.png)
 
-After user creation click  button **Choose a connection method**
+* After user creation click  button **Choose a connection method**
 
-**Click** <br>
+* **Click** <br>
 ![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/connectApp.png)
 
-Make sure Driver is set to **Node.js** and proper version (left mine 3.7) <br>
-Copy the string from #2 <br>
+* Make sure Driver is set to **Node.js** and proper version (left mine 3.7) <br>
+Copy the string from #2. We'll need it to establish a connection<br>
 ![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/connectToCluster.png)
+
+```bash
+#My string
+mongodb+srv://user_sample:<password>@cluster0.tzjfy.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+```
+Now we create a file **.env** where we will put the connection string above. This file is reference by **index.js** (process.env) in order to access the database 
+```bash
+ubuntu@ip-172-31-59-251:~/Todo$ touch .env
+ubuntu@ip-172-31-59-251:~/Todo$ vi .env
+ubuntu@ip-172-31-59-251:~/Todo$ cat .env
+DB = 'mongodb+srv://user_sample:Passw0rd!@cluster0.tzjfy.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+```
+Now we need to update the index.js to reflect the use of .env so that Node.js can connect to the database. Left Here
+Simply delete existing content in the file, and update it with the entire code below.
+```Javascript
+const express = require('express');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const routes = require('./routes/api');
+const path = require('path');
+require('dotenv').config();
+const app = express();
+const port = process.env.PORT || 5000;
+//connect to the database
+mongoose.connect(process.env.DB, { useNewUrlParser: true, useUnifiedTopology: true })
+.then(() => console.log(`Database connected successfully`))
+.catch(err => console.log(err));
+//since mongoose promise is depreciated, we overide it with node's promise
+mongoose.Promise = global.Promise;
+app.use((req, res, next) => {
+res.header("Access-Control-Allow-Origin", "\*");
+res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+next();
+});
+app.use(bodyParser.json());
+app.use('/api', routes);
+app.use((err, req, res, next) => {
+console.log(err);
+next();
+});
+app.listen(port, () => {
+console.log(`Server running on port ${port}`)
+});
+```
+We could write the connection string directly inside the **index.js** application file but using environmental variables to store information is more secure and a best practice to separate configuration and secret data from the application
+
+* Now we start the server (index.js) with commad **node index.js**
+```bash
+ubuntu@ip-172-31-59-251:~/Todo$ node index.js
+Server running on port 5000
+Database connected successfully
+```
+### **Testing Backend Code using RESTful API**
+* Since we do not have a frontend UI yet we need a way to test our code using **RESTful API**. Therefore, we will need to make use of some API development client to test our code. We will use **Postman**
+
+* We will test all the API endpoints and make sure they are working. For the endpoints that require body, we will send JSON back with the necessary fields since it’s what we have in our code.
+
+
+
 
 ![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png)
 ![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png)
