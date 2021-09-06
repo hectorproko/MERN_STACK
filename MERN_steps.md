@@ -741,5 +741,5 @@ monospace;
 ```bash
 npm run dev
 ```
-
-
+* Assuming there are no errors you can now access the application from your browser at PublicIP:3000
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/databaseUser.png) <br>
