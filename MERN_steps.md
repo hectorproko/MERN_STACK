@@ -338,13 +338,22 @@ Click on **Browse Collections**<br>
 Click on **Add My Own Data**<br>
 ![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/loadSampleDataset.png)
 
-Created Database named **sample_database**<br>
+Created Database named **myFirstDatabase**<br>
 ![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/createDatabase2.png)
 
-![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png)
-![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png)
-![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png)
-![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png)
+Click **Connect** and on step 2 **Create a Database User** mine is  **user_sample**
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/connect.png)
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/databaseUser.png)
+
+After user creation click  button **Choose a connection method**
+
+**Click** <br>
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/connectApp.png)
+
+Make sure Driver is set to **Node.js** and proper version (left mine 3.7) <br>
+Copy the string from #2 <br>
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/connectToCluster.png)
+
 ![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png)
 ![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png)
 ![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png)
