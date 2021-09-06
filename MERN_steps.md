@@ -313,22 +313,33 @@ We need a database where we will store our data. For this we will make use of m
 [Sign up here.](https://github.com/nodesource/distributions#deb) 
 Follow the sign up process, select AWS as the cloud provider, and choose a region near you.
 
-![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png)
+Pick Shared and click Create<br>
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/shared.png)
 
-![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png)
+Pick **aws** as your cloud provider and click **Create Cluster**
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/cloudProvider.png)
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/createCluster.png)
 
-![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png)
 
-![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png)
+Allow access to the MongoDB database from anywhere (Not secure, but it is ideal for testing)
+IMPORTANT NOTE
+In the image below, make sure you change the time of deleting the entry from 6 Hours to 1 Week <br>
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/networkAccess.png)
 
-![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png)
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/addIP.png)
 
-![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png)
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/addIP2.png)
 
-![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png)
 
-![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png)
-![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png)
+
+Click on **Browse Collections**<br>
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/databases.png)
+
+Click on **Add My Own Data**<br>
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/loadSampleDataset.png)
+
+Created Database named **sample_database**<br>
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/createDatabase2.png)
 
 ![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png)
 ![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png)
