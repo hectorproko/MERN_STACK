@@ -482,11 +482,10 @@ npm run dev
 ```
 The app should open and start running on localhost:3000 (keep in mind I already opened port **3000** along with **5000**)
 
-**Creating React Components**
-Components are reusable and also make code modular. For our Todo app, there will be two stateful components and one stateless component.
+**Creating React Components** <br>
+* Components are reusable and also make code modular. For our Todo app, there will be two stateful components and one stateless component.
 
-
-Inside **src** folder I'll create another folder called **components**.
+* Inside **src** folder I'll create another folder called **components**.
 Inside **components** I'll create three files **Input.js**, **ListTodo.js** and **Todo.js**.
 ```bash
 ubuntu@ip-172-31-59-251:~/Todo/client/src$ mkdir components
@@ -495,4 +494,252 @@ ubuntu@ip-172-31-59-251:~/Todo/client/src/components$ touch Input.js ListTodo.js
 ubuntu@ip-172-31-59-251:~/Todo/client/src/components$ ls
 Input.js  ListTodo.js  Todo.js
 ```
+
+* I'll put the following code inside of **Input.js**
+```Javascript
+import React, { Component } from 'react';
+import axios from 'axios';
+
+class Input extends Component {
+
+state = {
+action: ""
+}
+
+addTodo = () => {
+const task = {action: this.state.action}
+
+    if(task.action && task.action.length > 0){
+      axios.post('/api/todos', task)
+        .then(res => {
+          if(res.data){
+            this.props.getTodos();
+            this.setState({action: ""})
+          }
+        })
+        .catch(err => console.log(err))
+    }else {
+      console.log('input field required')
+    }
+
+}
+
+handleChange = (e) => {
+this.setState({
+action: e.target.value
+})
+}
+
+render() {
+let { action } = this.state;
+return (
+<div>
+<input type="text" onChange={this.handleChange} value={action} />
+<button onClick={this.addTodo}>add todo</button>
+</div>
+)
+}
+}
+
+
+export default Input
+```
+* Now I will install **Axios** (a Promise based HTTP client for the browser and node.js). From the **src** directory I will run
+```bash
+npm install axios
+```
+
+* I'll put the following code inside of **ListTodo.js**
+```Javascript
+import React from 'react';
+const ListTodo = ({ todos, deleteTodo }) => {
+return (
+<ul>
+{
+todos &&
+todos.length > 0 ?
+(
+todos.map(todo => {
+return (
+<li key={todo._id} onClick={() => deleteTodo(todo._id)}>{todo.action}</li>
+)
+})
+)
+:
+(
+<li>No todo(s) left</li>
+)
+}
+</ul>
+)
+}
+
+export default ListTodo
+```
+
+* I'll put the following code inside of **Todo.js**
+```Javascript
+import React, {Component} from 'react';
+import axios from 'axios';
+import Input from './Input';
+import ListTodo from './ListTodo';
+class Todo extends Component {
+state = {
+todos: []
+}
+componentDidMount(){
+this.getTodos();
+}
+getTodos = () => {
+axios.get('/api/todos')
+.then(res => {
+if(res.data){
+this.setState({
+todos: res.data
+})
+}
+})
+.catch(err => console.log(err))
+}
+deleteTodo = (id) => {
+axios.delete(`/api/todos/${id}`)
+      .then(res => {
+        if(res.data){
+          this.getTodos()
+        }
+      })
+      .catch(err => console.log(err))
+}
+render() {
+let { todos } = this.state;
+return(
+      <div>
+        <h1>My Todo(s)</h1>
+        <Input getTodos={this.getTodos}/>
+        <ListTodo todos={todos} deleteTodo={this.deleteTodo}/>
+      </div>
+    )
+}
+}
+export default Todo;
+```
+
+* I'll put the following code inside of **App.js** located in **src**
+```Javascript
+import React from 'react';
+import Todo from './components/Todo';
+import './App.css';
+const App = () => {
+return (
+<div className="App">
+<Todo />
+</div>
+);
+}
+export default App;
+```
+* I'll put the following code inside of **App.css** located in **src**
+```css
+.App {
+text-align: center;
+font-size: calc(10px + 2vmin);
+width: 60%;
+margin-left: auto;
+margin-right: auto;
+}
+input {
+height: 40px;
+width: 50%;
+border: none;
+border-bottom: 2px #101113 solid;
+background: none;
+font-size: 1.5rem;
+color: #787a80;
+}
+input:focus {
+outline: none;
+}
+button {
+width: 25%;
+height: 45px;
+border: none;
+margin-left: 10px;
+font-size: 25px;
+background: #101113;
+border-radius: 5px;
+color: #787a80;
+cursor: pointer;
+}
+button:focus {
+outline: none;
+}
+ul {
+list-style: none;
+text-align: left;
+padding: 15px;
+background: #171a1f;
+border-radius: 5px;
+}
+li {
+padding: 15px;
+font-size: 1.5rem;
+margin-bottom: 15px;
+background: #282c34;
+border-radius: 5px;
+overflow-wrap: break-word;
+cursor: pointer;
+}
+@media only screen and (min-width: 300px) {
+.App {
+width: 80%;
+}
+input {
+width: 100%
+}
+button {
+width: 100%;
+margin-top: 15px;
+margin-left: 0;
+}
+}
+@media only screen and (min-width: 640px) {
+.App {
+width: 60%;
+}
+input {
+width: 50%;
+}
+button {
+width: 30%;
+margin-left: 10px;
+margin-top: 0;
+}
+}
+```
+
+* I'll put the following code inside of **index.css** located in **src**
+```css
+body {
+margin: 0;
+padding: 0;
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+"Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+sans-serif;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+box-sizing: border-box;
+background-color: #282c34;
+color: #787a80;
+}
+code {
+font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+monospace;
+}
+```
+
+* From directory **Todo** run
+```bash
+npm run dev
+```
+
 
