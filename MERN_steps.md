@@ -219,22 +219,127 @@ Our **To-Do** application needs to be able to do the following 3 actions:
 * Each task will be associated with some particular endpoint and will use different standard HTTP request methods: POST, GET, DELETE.
 * For each task, we need to create routes that will define various endpoints that the To-do app will depend on. So let us create a folder routes
 
+Now lets create a directory **routes** and inside of it a file **api.js**
+```bash
+ubuntu@ip-172-31-59-251:~/Todo$ mkdir routes
+ubuntu@ip-172-31-59-251:~/Todo$ cd routes
+ubuntu@ip-172-31-59-251:~/Todo/routes$ touch api.js
+ubuntu@ip-172-31-59-251:~/Todo/routes$ vim api.js
+```
 
-<!-- UL -->
-* Item 1
-* Item 2
-* Item 3
-  * Nested Item 1
-  * Nested Item 2
-
-<!-- OL -->
-
-
-
-
+Using a file editor we'll open **api.js** and paste the following code inside
+```javascript
+const express = require ('express');
+const router = express.Router();
+router.get('/todos', (req, res, next) => {
+});
+router.post('/todos', (req, res, next) => {
+});
+router.delete('/todos/:id', (req, res, next) => {
+})
+module.exports = router;
+```
 ## MODELS
-## MONGODB DATABASE
 
+We will need to create a model for our app to make user of **MongoDB**. In JavaScript a model is what makes it interactive. This is important for us to be able to define the fields stored in each Mongodb document. To create a Schema and a model, we need to install mongoose (a Node.js package that makes working with mongodb easier).
+
+To install Mongoose change directory back **Todo** folder and run
+```bash
+npm install mongoose
+```
+We'll create a new directory **models** and inside of it a new file **todo.js**
+```bash
+ubuntu@ip-172-31-59-251:~/Todo$ mkdir models && cd models && touch todo.js
+```
+
+Open **todo.js** with a file editor to paste below code
+```bash
+ubuntu@ip-172-31-59-251:~/Todo/models$ vi todo.js
+```
+```Javascript
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+//create schema for todo
+const TodoSchema = new Schema({
+action: {
+type: String,
+required: [true, 'The todo text field is required']
+}
+})o
+//create model for todo
+const Todo = mongoose.model('todo', TodoSchema);
+module.exports = Todo;
+```
+Now we need to update our routes from the file **api.js** in **routes** directory to make use of the new model.
+```bash
+ubuntu@ip-172-31-59-251:~/Todo/routes$ vi api.js
+```
+We'll delete all the content inside **api.js** and paste code below
+```Javascript
+const express = require ('express');
+const router = express.Router();
+const Todo = require('../models/todo');
+router.get('/todos', (req, res, next) => {
+//this will return all the data, exposing only the id and action field to the client
+Todo.find({}, 'action')
+.then(data => res.json(data))
+.catch(next)
+});
+
+router.post('/todos', (req, res, next) => {
+if(req.body.action){
+Todo.create(req.body)
+.then(data => res.json(data))
+.catch(next)
+}else {
+res.json({
+error: "The input field is empty"
+})
+}
+});
+
+router.delete('/todos/:id', (req, res, next) => {
+Todo.findOneAndDelete({"_id": req.params.id})
+.then(data => res.json(data))
+.catch(next)
+})
+module.exports = router;
+```
+
+## MONGODB DATABASE
+We need a database where we will store our data. For this we will make use of mLab. mLab provides **MongoDB** database as a service solution (DBaaS).<br>
+ 
+
+[Sign up here.](https://github.com/nodesource/distributions#deb) 
+Follow the sign up process, select AWS as the cloud provider, and choose a region near you.
+
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png)
+
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png)
+
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png)
+
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png)
+
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png)
+
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png)
+
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png)
+
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png)
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png)
+
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png)
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png)
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png)
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png)
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png)
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png)
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png)
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png)
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png)
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png)
 
 # STEP2: FRONTEND CREATION
 ---
