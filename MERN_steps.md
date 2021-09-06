@@ -214,6 +214,9 @@ Server running on port 5000 #Output if everything is ok
     1. Create a new task
     2. Display list of all tasks
     3. Delete a completed task 
+1. Create a new task
+1. Item 2
+1. Item 3
 
 * **Routing** refers to how an application’s endpoints (URIs) respond to client requests.
 * Each task will be associated with some particular endpoint and will use different standard HTTP request methods: POST, GET, DELETE.
@@ -228,9 +231,7 @@ Server running on port 5000 #Output if everything is ok
   * Nested Item 2
 
 <!-- OL -->
-1. Item 1
-1. Item 2
-1. Item 3
+
 
 
 
