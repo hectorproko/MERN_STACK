@@ -212,8 +212,8 @@ Server running on port 5000 #Output if everything is ok
     **Routes**<br>
     Our **To-Do** application needs to be able to do the following 3 actions:
     1. Create a new task
-    1. Display list of all tasks
-    1. Delete a completed task 
+    2. Display list of all tasks
+    3. Delete a completed task 
 
 * **Routing** refers to how an application’s endpoints (URIs) respond to client requests.
 * Each task will be associated with some particular endpoint and will use different standard HTTP request methods: POST, GET, DELETE.
