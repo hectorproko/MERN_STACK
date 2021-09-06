@@ -407,10 +407,8 @@ Database connected successfully
 
 * We will test all the API endpoints and make sure they are working. For the endpoints that require body, we will send JSON back with the necessary fields since it’s what we have in our code.
 
-
-
-
-![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/headers.png) <br>
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/headers.png)
+ <br>
 
 ![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png) <br>
 ![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png) <br>
