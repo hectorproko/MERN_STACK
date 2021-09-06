@@ -190,7 +190,7 @@ ubuntu@ip-172-31-59-251:~/Todo$ node index.js
 Server running on port 5000 #Output if everything is ok
 ```
 
-* Now we are going to add a rule to our **Security Group** to open **TCP** port **80**
+* Now we are going to add a rule to our **Security Group** to open **TCP** port **5000** (while I'm here I will open port **3000** as well)
     * Navigate to your intances dashboard and select your instance by cliking the empty box <br /> 
     ![Markdown Logo](https://raw.githubusercontent.com/hectorproko/LAMP_STACK/main/images/checkMark.png) <br>
     * Look for the **Security** tab <br /> 
@@ -433,3 +433,66 @@ The result is the string that we previously sent with an ID "**611b03d9998cb7038
 
 # STEP2: FRONTEND CREATION
 ---
+
+It is time to create a user interface for a Web client (browser) to interact with the application via API. To start out with the frontend of the To-do app, we will use the **create-react-app** command to scaffold our app.
+In the same root directory as your backend code (Todo) run:
+ ```bash
+ npx create-react-app client
+```
+This will create a new folder in **Todo** directory called **client**, where all the **react** code will be added.
+
+**Running a React App**
+
+* We'll install concurrently to run more than one command simultaneously from the same terminal window.
+```bash
+npm install concurrently --save-dev
+```
+* We'll install nodemon to run and monitor the server. If there is any change in the server code, nodemon will restart it automatically and load the new changes.
+```bash
+npm install nodemon --save-dev
+```
+* In directory **Todo** we need to edit file  **package.json** by replacing code block **"scripts":{...},** with
+```bash
+ "scripts": {
+    "start": "node index.js",
+    "start-watch": "nodemon index.js",
+    "dev": "concurrently \"npm run start-watch\" \"cd client && npm start\""
+  },
+```
+
+**Configure Proxy in package.json**
+
+* Change directory to **client** and edit file **package.json** by adding the key value pair 
+```JSON
+"proxy": "http://localhost:5000"
+```
+```bash
+#I added mine at the end
+    ]
+  },
+  "proxy":"http://localhost:5000"
+}
+```
+
+The purpose of adding the proxy configuration above is to make it possible to access the application directly from the browser by simply calling the server url like http://localhost:5000 rather than always including the entire path like http://localhost:5000/api/todos
+
+Now, from inside the **Todo** directory run
+```bash
+npm run dev
+```
+The app should open and start running on localhost:3000 (keep in mind I already opened port **3000** along with **5000**)
+
+**Creating React Components**
+Components are reusable and also make code modular. For our Todo app, there will be two stateful components and one stateless component.
+
+
+Inside **src** folder I'll create another folder called **components**.
+Inside **components** I'll create three files **Input.js**, **ListTodo.js** and **Todo.js**.
+```bash
+ubuntu@ip-172-31-59-251:~/Todo/client/src$ mkdir components
+ubuntu@ip-172-31-59-251:~/Todo/client/src$ cd components/
+ubuntu@ip-172-31-59-251:~/Todo/client/src/components$ touch Input.js ListTodo.js Todo.js
+ubuntu@ip-172-31-59-251:~/Todo/client/src/components$ ls
+Input.js  ListTodo.js  Todo.js
+```
+
