@@ -206,9 +206,22 @@ Server running on port 5000 #Output if everything is ok
     * Save it <br />
     ![Markdown Logo](https://raw.githubusercontent.com/hectorproko/LAMP_STACK/main/images/SaveRules.png) 
 
-
+    * I will now test Express on the browser using the AWS EC2 Intance **Public IP** followed by the port **5000** <br>
     ![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png)
-     
+
+    **Routes**<br>
+    Our **To-Do** application needs to be able to do the following 3 actions:
+    1. Create a new task
+    1. Display list of all tasks
+    1. Delete a completed task 
+
+* **Routing** refers to how an application’s endpoints (URIs) respond to client requests.
+* Each task will be associated with some particular endpoint and will use different standard HTTP request methods: POST, GET, DELETE.
+* For each task, we need to create routes that will define various endpoints that the To-do app will depend on. So let us create a folder routes
+
+
+
+
 
 ## MODELS
 ## MONGODB DATABASE
