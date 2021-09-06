@@ -3,44 +3,44 @@
 Before we start we need to have an environemnt to work with. I will we using my AWS account to create an EC2 instance with an Ubuntu Server.
 
 * First thing I'm going to do when I log in to AWS is look for the **EC2** services. There are various methods to navigate to it, here I'm using the **search bar** <br /> 
-![Markdown Logo](https://raw.githubusercontent.com/hectorproko/LAMP_STACK/main/images/ec2search.png)
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/LAMP_STACK/main/images/ec2search.png) <br>
 
 * Once you navigate to the **EC2** page look for a **Launch instance** button <br /> 
-![Markdown Logo](https://raw.githubusercontent.com/hectorproko/LAMP_STACK/main/images/launchInstance.png)
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/LAMP_STACK/main/images/launchInstance.png) <br>
 
 * You will then be prompted to pick an OS Image. I will be using **Ubuntu Server 20.04 LTS (HVM), SSD Volume**. Once done click **Select**
 
 * I will pick the **t2.micro** instace type <br /> 
- ![Markdown Logo](https://raw.githubusercontent.com/hectorproko/LAMP_STACK/main/images/t2micro.png)
+ ![Markdown Logo](https://raw.githubusercontent.com/hectorproko/LAMP_STACK/main/images/t2micro.png) <br>
 
 * I will leave default settings and click **Review and Launch** <br /> 
-![Markdown Logo](https://raw.githubusercontent.com/hectorproko/LAMP_STACK/main/images/reviewLaunch.png)
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/LAMP_STACK/main/images/reviewLaunch.png) <br>
 
 * As you can see we have a Security Group applied to the instance by default which allows SSH connections <br /> 
-![Markdown Logo](https://raw.githubusercontent.com/hectorproko/LAMP_STACK/main/images/sshDefault.png)
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/LAMP_STACK/main/images/sshDefault.png) <br>
 
 * After reviewing you can launch your instancing by clicking <br /> 
-![Markdown Logo](https://raw.githubusercontent.com/hectorproko/LAMP_STACK/main/images/launch.png)
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/LAMP_STACK/main/images/launch.png) <br>
 
 * We are prompted to create or use an existing Key Pair. I will be creating a new one. I will use this .pem key to SSH into the instance later on. <br /> 
-![Markdown Logo](https://raw.githubusercontent.com/hectorproko/LAMP_STACK/main/images/keyPair.png)
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/LAMP_STACK/main/images/keyPair.png) <br>
 
 * Once you have downloaded your key launch intance <br /> 
-![Markdown Logo](https://raw.githubusercontent.com/hectorproko/LAMP_STACK/main/images/LaunchInstances.png)
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/LAMP_STACK/main/images/LaunchInstances.png) <br>
 
 * To go to the instances dashboard <br /> 
-![Markdown Logo](https://raw.githubusercontent.com/hectorproko/LAMP_STACK/main/images/ViewInstances.png)
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/LAMP_STACK/main/images/ViewInstances.png) <br>
 
 * If your instance is up and running you will see something like this <br /> 
-![Markdown Logo](https://raw.githubusercontent.com/hectorproko/LAMP_STACK/main/images/Running.png)
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/LAMP_STACK/main/images/Running.png) <br>
 
 * To find information on how to connect click on your **Instance ID**
 
 * In the top-right corner you should see the button **Connect**, click on it <br /> 
-![Markdown Logo](https://raw.githubusercontent.com/hectorproko/LAMP_STACK/main/images/Connect.png)
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/LAMP_STACK/main/images/Connect.png) <br>
 
 * Look for the **SSH client** tab <br /> 
-![Markdown Logo](https://raw.githubusercontent.com/hectorproko/LAMP_STACK/main/images/SSHclient.png)
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/LAMP_STACK/main/images/SSHclient.png) <br>
 
 * Under **Example** you'll find an **ssh** command with eveything you need to connect to the instance from a terminal
 
@@ -51,7 +51,7 @@ ssh -i "daro.io.pem" ubuntu@ec2-3-216-90-84.compute-1.amazonaws.com
 Make sure when you run the command that your current working directory in the terminal is where your KeyPair/.pem is located because in the above example I'm using a relative path to point to my key
 
 * A successful log-in <br /> 
-![Markdown Logo](https://raw.githubusercontent.com/hectorproko/LAMP_STACK/main/images/ubunutuLogIn.png)
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/LAMP_STACK/main/images/ubunutuLogIn.png) <br>
 
 
 # STEP1: BACKEND CONFIGURATION
@@ -192,22 +192,22 @@ Server running on port 5000 #Output if everything is ok
 
 * Now we are going to add a rule to our **Security Group** to open **TCP** port **80**
     * Navigate to your intances dashboard and select your instance by cliking the empty box <br /> 
-    ![Markdown Logo](https://raw.githubusercontent.com/hectorproko/LAMP_STACK/main/images/checkMark.png)
+    ![Markdown Logo](https://raw.githubusercontent.com/hectorproko/LAMP_STACK/main/images/checkMark.png) <br>
     * Look for the **Security** tab <br /> 
-    ![Markdown Logo](https://raw.githubusercontent.com/hectorproko/LAMP_STACK/main/images/security.png)
+    ![Markdown Logo](https://raw.githubusercontent.com/hectorproko/LAMP_STACK/main/images/security.png) <br>
     * Click on top of your **Security Group**  <br />
-    ![Markdown Logo](https://raw.githubusercontent.com/hectorproko/LAMP_STACK/main/images/securityGroup.png) <br />
+    ![Markdown Logo](https://raw.githubusercontent.com/hectorproko/LAMP_STACK/main/images/securityGroup.png) <br> <br />
     Keep in mind yours might look different
     * Under the tab **Inbound Rules** click **Edit inbound rules** button <br />
-    ![Markdown Logo](https://raw.githubusercontent.com/hectorproko/LAMP_STACK/main/images/editInboundRules.png) <br />
+    ![Markdown Logo](https://raw.githubusercontent.com/hectorproko/LAMP_STACK/main/images/editInboundRules.png) <br> <br />
     * Click **Add rule** <br />
-    ![Markdown Logo](https://raw.githubusercontent.com/hectorproko/LAMP_STACK/main/images/addRule.png) 
+    ![Markdown Logo](https://raw.githubusercontent.com/hectorproko/LAMP_STACK/main/images/addRule.png) <br> 
     * Pick type **Custom TCP** and source **0.0.0.0/0** meaning all IPs, you can also use drop-down menu **Anywhere-IPv4**
     * Save it <br />
-    ![Markdown Logo](https://raw.githubusercontent.com/hectorproko/LAMP_STACK/main/images/SaveRules.png) 
+    ![Markdown Logo](https://raw.githubusercontent.com/hectorproko/LAMP_STACK/main/images/SaveRules.png) <br> 
 
     * I will now test Express on the browser using the AWS EC2 Intance **Public IP** followed by the port **5000** <br>
-    ![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png)
+    ![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png) <br>
 
 **Routes**<br>
 Our **To-Do** application needs to be able to do the following 3 actions:
@@ -314,42 +314,42 @@ We need a database where we will store our data. For this we will make use of m
 Follow the sign up process, select AWS as the cloud provider, and choose a region near you.
 
 * Pick Shared and click Create<br>
-![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/shared.png)
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/shared.png) <br>
 
 * Pick **aws** as your cloud provider and click **Create Cluster**
-![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/cloudProvider.png)
-![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/createCluster.png)
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/cloudProvider.png) <br>
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/createCluster.png) <br>
 
 
 * Allow access to the MongoDB database from anywhere (Not secure, but it is ideal for testing) <br>
-![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/networkAccess.png)
-![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/addIP.png) <br>
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/networkAccess.png) <br>
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/addIP.png) <br> <br>
 In the image below, make sure you change the time of deleting the entry from 6 Hours to 1 Week <br>
-![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/addIP2.png)
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/addIP2.png) <br>
 
 
 
 * Click on **Browse Collections**<br>
-![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/databases.png)
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/databases.png) <br>
 
 * Click on **Add My Own Data**<br>
-![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/loadSampleDataset.png)
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/loadSampleDataset.png) <br>
 
 * Created Database named **myFirstDatabase**<br>
-![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/createDatabase2.png)
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/createDatabase2.png) <br>
 
 * Click **Connect** and on step 2 **Create a Database User** mine is  **user_sample**
-![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/connect.png)
-![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/databaseUser.png)
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/connect.png) <br>
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/databaseUser.png) <br>
 
 * After user creation click  button **Choose a connection method**
 
 * **Click** <br>
-![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/connectApp.png)
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/connectApp.png) <br>
 
 * Make sure Driver is set to **Node.js** and proper version (left mine 3.7) <br>
 Copy the string from #2. We'll need it to establish a connection<br>
-![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/connectToCluster.png)
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/connectToCluster.png) <br>
 
 ```bash
 #My string
@@ -410,12 +410,12 @@ Database connected successfully
 
 
 
-![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png)
-![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png)
-![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png)
-![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png)
-![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png)
-![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png)
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png) <br>
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png) <br>
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png) <br>
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png) <br>
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png) <br>
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png) <br>
 
 # STEP2: FRONTEND CREATION
 ---
