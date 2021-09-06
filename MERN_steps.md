@@ -407,14 +407,32 @@ Database connected successfully
 
 * We will test all the API endpoints and make sure they are working. For the endpoints that require body, we will send JSON back with the necessary fields since it’s what we have in our code.
 
-![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/headers.png)
- <br>
+* Now open your Postman, create a **POST** request to the API **http://PublicIP-or-PublicDNS:5000/api/todos**. This request sends a new task to our To-Do list so the application could store it in the database.
+
+* Create a New Request <br> 
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/getStarted.png) <br>
+
+* **Note**: make sure your set header key **Content-Type** as **application/json**
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/headers.png)<br>
+
+* We make sure we have the right **endpoint** (next to POST), an **action** in the **Body** and Click **Send** <br>
+Here we are storing/posting string **Finish Projects 1 - 30** in the Database using HTTP Request Method **POST**
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/postBody.png) <br>
+
+* Now we will retrive the contents of Database using HTTP Request Method **GET**<br>
+The result is the string that we previously sent with an ID "**611b03d9998cb70389c86882**" <br>
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/get.png) <br>
+
+* Now we will delete the entry by using the ID "**611b03d9998cb70389c86882**" previously retrived <br>
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/delete.png) <br>
+
 
 ![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png) <br>
 ![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png) <br>
 ![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png) <br>
 ![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png) <br>
 ![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png) <br>
+
 
 # STEP2: FRONTEND CREATION
 ---
