@@ -419,20 +419,17 @@ Database connected successfully
 Here we are storing/posting string **Finish Projects 1 - 30** in the Database using HTTP Request Method **POST**
 ![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/postBody.png) <br>
 
-* Now we will retrive the contents of Database using HTTP Request Method **GET**<br>
+* Now we will retrieve the contents of Database using HTTP Request Method **GET**<br>
 The result is the string that we previously sent with an ID "**611b03d9998cb70389c86882**" <br>
 ![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/get.png) <br>
 
-* Now we will delete the entry by using the ID "**611b03d9998cb70389c86882**" previously retrived <br>
+* Now we will delete the entry by using the ID "**611b03d9998cb70389c86882**" previously retrieved with HTTP Request Method **DELETE** <br>
 ![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/delete.png) <br>
 
+* To double check the entry was deleted we use **GET** again to get the information and we see that nothing is there <br>
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/getCheck.png) <br>
 
-![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png) <br>
-![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png) <br>
-![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png) <br>
-![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png) <br>
-![Markdown Logo](https://raw.githubusercontent.com/hectorproko/MERN_STACK/main/images/welcomeExpress.png) <br>
-
+* With this successful test we know our applicatin backend is working
 
 # STEP2: FRONTEND CREATION
 ---
