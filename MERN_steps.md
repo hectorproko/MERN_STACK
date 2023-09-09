@@ -1,4 +1,4 @@
-# IMPLEMENTING LAMP STACK
+# IMPLEMENTING MERN STACK
 
 Before we start we need to have an environemnt to work with. I will we using my AWS account to create an EC2 instance with an Ubuntu Server.
 
